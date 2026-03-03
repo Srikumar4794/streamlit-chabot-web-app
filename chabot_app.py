@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 import streamlit as st
 from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 #load the env variables from the .env file
 load_dotenv()
@@ -12,11 +14,11 @@ st.title("💬 Generative AI Chatbot")
 model_name = st.selectbox("Select a model", ["llama-3.3-70b-versatile", "gemini-1.5-pro", "gpt-4.1"])
 
 if model_name == "llama-3.3-70b-versatile":
-    llm = ChatGroq(model="llama-3.3-70b-versatile" ,temperature=0.1)
+    llm = ChatGroq(model="llama-3.3-70b-versatile" ,temperature=0)
 elif model_name == "gemini-1.5-pro":
-    llm = ChatGroq(model="gemini-1.5-pro" ,temperature=0.1)
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro" ,temperature=0)
 elif model_name == "gpt-4.1":
-    llm = ChatGroq(model="gpt-4.1" ,temperature=0.1)
+    llm = ChatOpenAI(model="gpt-4.1" ,temperature=0)
 
 # initiate chat history in session state if it doesn't exist
 if "chat_history" not in st.session_state:
