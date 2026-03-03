@@ -11,12 +11,10 @@ load_dotenv()
 st.set_page_config(page_title="💬Chatbot", page_icon="🤖", layout="centered")
 st.title("💬 Generative AI Chatbot")
 
-model_name = st.selectbox("Select a model", ["llama-3.3-70b-versatile", "gemini-3-pro-preview", "gpt-4.1"])
+model_name = st.selectbox("Select a model", ["llama-3.3-70b-versatile", "gpt-4.1"])
 
 if model_name == "llama-3.3-70b-versatile":
     llm = ChatGroq(model="llama-3.3-70b-versatile" ,temperature=0)
-elif model_name == "gemini-3-pro-preview":
-    llm = ChatGoogleGenerativeAI(model="gemini-3-pro-preview" ,temperature=0)
 elif model_name == "gpt-4.1":
     llm = ChatOpenAI(model="gpt-4.1" ,temperature=0)
 
